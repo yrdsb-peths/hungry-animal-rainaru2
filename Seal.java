@@ -15,6 +15,29 @@ public class Seal extends Actor
     public void act()
     {
         // Add your action code here.
-        move(1);
+    
+        if(Greenfoot.isKeyDown("up"))
+        {
+            setLocation(getX(), getY()-5);
+        }
+        if(Greenfoot.isKeyDown("down"))
+        {
+            setLocation(getX(), getY()+5);
+        }
+        if(Greenfoot.isKeyDown("left"))
+        {
+            setLocation(getX()-5, getY());
+        }
+        if(Greenfoot.isKeyDown("right"))
+        {
+            setLocation(getX()+5, getY());
+        }
+        if(isTouching(Bread.class))
+        {
+            removeTouching(Bread.class);
+            MyWorld world = (MyWorld)getWorld();
+            world.spawnBread();
+        }
+        
     }
 }
