@@ -25,8 +25,10 @@ public class MyWorld extends World
     }
     public void spawnBread()
     {
+        Bread b = new Bread();
         int x = Greenfoot.getRandomNumber(600);
         int y = 0;
-        Bread b = new Bread();
+        addObject(b, x, y);
+        
     }
 }
