@@ -12,11 +12,12 @@ public class Bread extends Actor
      * Act - do whatever the Bread wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    int speed = 1;
     public void act()
     {
         // Add your action code here.
         int x = getX();
-        int y = getY();
+        int y = getY() + speed;
         setLocation(x, y + 2);
         
         MyWorld world = (MyWorld)getWorld();
@@ -27,5 +28,9 @@ public class Bread extends Actor
             world.removeObject(this);
         }
         
+    }
+    public void setSpeed(int s)
+    {
+        speed = s;
     }
 }
