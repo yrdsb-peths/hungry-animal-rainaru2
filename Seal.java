@@ -12,6 +12,7 @@ public class Seal extends Actor
      * Act - do whatever the Seal wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    GreenfootSound roar = new GreenfootSound("scream.mp3");
     public void act()
     {
         // Add your action code here.
@@ -32,13 +33,20 @@ public class Seal extends Actor
         {
             setLocation(getX()+5, getY());
         }
+        eat();
+        
+    }
+    public void eat()
+    {
         if(isTouching(Bread.class))
         {
             removeTouching(Bread.class);
             MyWorld world = (MyWorld)getWorld();
             world.spawnBread();
             world.increaseScore();
+            roar.play();
         }
         
     }
+
 }

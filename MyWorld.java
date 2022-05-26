@@ -35,13 +35,13 @@ public class MyWorld extends World
         scoreLabel.setValue(score);
         if(score % 5 == 0)
         {
-            level += 2;  
+            level += 1;  
         }
     }
     
     public void gameOver()
     {
-        Label gameOverLabel = new Label("Game Over", 100);
+        Label gameOverLabel = new Label("You Failed", 100);
         addObject(gameOverLabel, 300, 200);
     }
     public void spawnBread()
