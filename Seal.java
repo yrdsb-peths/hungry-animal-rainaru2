@@ -13,6 +13,31 @@ public class Seal extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     GreenfootSound roar = new GreenfootSound("scream.mp3");
+    GreenfootImage[] idle = new GreenfootImage[4];
+    
+    SimpleTimer animationTimer = new SimpleTimer();
+    
+    public Seal()
+    {
+        for(int i = 0; i < idle.length; i++)
+        {
+            idle[i] = new GreenfootImage("images/sealsprites/idle" + i + ".png");
+        }
+        setImage(idle[0]);
+        animationTimer.mark();
+    }
+    int imageIndex = 0;
+    public void animate()
+    {
+        if(animationTimer.millisElapsed() < 500)
+        {
+            return;
+        }
+        animationTimer.mark();
+        setImage(idle[imageIndex]);
+        imageIndex = (imageIndex + 1) % idle.length;
+        
+    }
     public void act()
     {
         // Add your action code here.
@@ -34,7 +59,7 @@ public class Seal extends Actor
             setLocation(getX()+5, getY());
         }
         eat();
-        
+        animate();
     }
     public void eat()
     {
